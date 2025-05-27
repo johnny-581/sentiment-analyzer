@@ -1,0 +1,13 @@
+# create and activate
+python3 -m venv venv
+source venv/bin/activate
+
+# add venv/ to gitignore
+
+# create requirements.txt
+pip3 freeze > requirements.txt
+
+# others can recreate the environment with:
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
