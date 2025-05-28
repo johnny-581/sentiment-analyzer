@@ -8,28 +8,10 @@ import joblib
 def train_sentiment_model():
     print("starting model training...")
 
-    data = {
-        'text': [
-            "I love this movie, it's fantastic!",
-            "This was an amazing experience.",
-            "Absolutely brilliant, would watch again.",
-            "The best film I've seen all year.",
-            "Such a heartwarming story.",
-            "I hated this film, it was terrible.",
-            "A complete waste of time.",
-            "The acting was awful and the plot was boring.",
-            "I would not recommend this to anyone.",
-            "This is the worst movie ever."
-        ],
-        'sentiment': [
-            'positive', 'positive', 'positive', 'positive', 'positive',
-            'negative', 'negative', 'negative', 'negative', 'negative'
-        ]
-    }
-    df = pd.DataFrame(data)
+    df = pd.read_csv('IMDB-dataset.csv')
 
     print("vectorizing text data...")
-    vectorizer = TfidfVectorizer(stop_words='english', max_features=1000)
+    vectorizer = TfidfVectorizer(stop_words='english')
     X = vectorizer.fit_transform(df['text']) # X is now a matrix where each row represents a review, and each column is a word feature
     y = df['sentiment']
 
